@@ -21,21 +21,32 @@ Date::Date() {
 	day = locTime->tm_mday;
 }
 
-Date::Date(int y, int m, int d) {}
+Date::Date(int y, int m, int d) : year(y), month(m), day(d) {}
 
 int Date::get_year() const {
-	return 0;
+	return year;
 }
 
 int Date::get_month() const {
-	return 0;
+	return month;
 }
 
 int Date::get_day() const {
-	return 0;
+	return day;
 }
 
 void Date::next() {
+	if (day == daysPerMonth[month-1]){
+		if(month == 12){
+			month = 1;
+			++year;
+		}else{
+			++month;
+		}
+		day = 1;
+	}else{
+		++day;
+	}
 }
 
 void print(const Date& d) {
@@ -58,5 +69,15 @@ bool operator<(const Date& d1, const Date& d2) {
 }
 
 int distance(const Date& d1, const Date& d2) {
-	return 0;
+	Date first = d1;
+	Date second = d2;
+	int dayDistance = 0;
+	if(second < first){
+		swap(first,second);
+	}
+	while(first < second){
+		first.next();
+		++dayDistance;
+	}
+	return dayDistance;
 }
