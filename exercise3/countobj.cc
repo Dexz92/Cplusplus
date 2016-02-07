@@ -11,6 +11,7 @@ public:
 	Counted();
 	~Counted();
 	static int getNbrObj();
+	Counted(const Counted& rhs);
 private:
 	static int nbrObj;
 };
@@ -28,6 +29,11 @@ Counted::~Counted() {
 int Counted::getNbrObj() {
 	return nbrObj;
 }
+
+Counted::Counted(const Counted&){
+	++nbrObj;
+}
+
 
 void f() {
 	Counted c;
@@ -56,13 +62,12 @@ void print_nbr_objects(const string& msg) {
 int main() {
 	print_nbr_objects("Program start, before f()");
 	f();
-	
+
 	print_nbr_objects("After f(), before g()    ");
 	g();
-	
+
 	print_nbr_objects("After g(), before h()    ");
 	h();
-	
+
 	print_nbr_objects("After h(), program end   ");
 }
-
