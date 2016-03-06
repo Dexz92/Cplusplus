@@ -9,8 +9,8 @@ int main() {
 	t.addLine("Line 1 ...");
 	t.addLine("This is the second line.");
 	t.addLine("And this is the last line.");
+
 	
-	/*
 	for (Text::iterator it = t.begin(); it != t.end(); ++it) {
 		if (*it == ' ') {
 			*it = 'X';
@@ -18,5 +18,5 @@ int main() {
 		cout << *it;
 	}
 	cout << endl;
-	 */
+
 }
