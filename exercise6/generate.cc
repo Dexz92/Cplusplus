@@ -5,30 +5,45 @@
 
 using namespace std;
 
+template <typename T>
+class SequenceGenerator {
+public:
+	SequenceGenerator(T istart = T(), T istep = 1) : start(istart), step(istep) {}
+	T operator()(){
+		T temp = start;
+		start += step;
+		return temp;
+	}
+private:
+	T start;
+	T step;
+};
+
+
 int main() {
 	vector<int> v(10); // allocate 10 elements
-	
+
 	/*
 	 * Output: 10 15 20 25 30 35 40 45 50 55
 	 */
 	generate(v.begin(), v.end(), SequenceGenerator<int>(10, 5));
 	copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
 	cout << endl;
-	
+
 	/*
 	 * Output: 5 6 7 8 9 10 11 12 13 14
 	 */
 	generate(v.begin(), v.end(), SequenceGenerator<int>(5));
 	copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
 	cout << endl;
-	
+
 	/*
 	 * Output: 0 1 2 3 4 5 6 7 8 9
 	 */
 	generate(v.begin(), v.end(), SequenceGenerator<int>());
 	copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
 	cout << endl;
-	
+
 	/*
 	 * Output: abcd...xyz
 	 */
