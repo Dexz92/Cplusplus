@@ -1,2 +1,2 @@
 # Cplusplus
-My own work of C++
+My C++ solutions for the course EDA031(C++) @ LTH.
